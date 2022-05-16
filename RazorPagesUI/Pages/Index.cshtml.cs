@@ -12,11 +12,18 @@ namespace RazorPagesUI.Pages
             _logger = logger;
         }
 
-        public int Id { get; set; } = 1;
+       //This is done to write to a property, BindProperty lekhnai parcha
+        //Making them writable
+        
+        [BindProperty(SupportsGet = true)]
 
+        public string City { get; set; }
         public void OnGet()
         {
-
+            if (string.IsNullOrEmpty(City))
+            {
+                City = "The Web";
+            }
         }
     }
 }
